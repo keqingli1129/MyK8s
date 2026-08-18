@@ -1,7 +1,9 @@
 FROM python:3.12-slim
 
-# uv, pinned to the version that produced uv.lock
-COPY --from=ghcr.io/astral-sh/uv:0.8.15 /uv /uvx /bin/
+# uv, pinned to the version that produced uv.lock. Installed from PyPI rather than
+# copied from ghcr.io/astral-sh/uv: registry pulls happen daemon-side, where the
+# build script's --add-host pins do not apply, and ghcr.io resolution is unreliable here.
+RUN pip install --no-cache-dir uv==0.8.15
 
 WORKDIR /app
 
