@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myk8s-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myk8s
+  template:
+    metadata:
+      labels:
+        app: myk8s
+    spec:
+      containers:
+      - name: myk8s-container
+        image: myk8s:dev
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: IfNotPresent
+
+          

@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+# District TLS-interception root, re-exported by build.ps1 on every build. Not committed:
+# it is internal PKI material on a public repo, and images built off this network should
+# not trust the proxy.
+certs/*.crt

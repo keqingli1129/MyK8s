@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myk8s-service
+  labels:
+    app: myk8s
+spec:
+  type: LoadBalancer
+  selector:
+    app: myk8s          # matches the pod template labels in deployment.yaml
+  ports:
+  - name: http
+    port: 80            # the port the Service listens on
+    targetPort: 8080    # the containerPort gunicorn binds
+    protocol: TCP
