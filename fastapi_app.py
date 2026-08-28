@@ -38,7 +38,7 @@ async def tell_a_joke():
 @app.post("/agent")
 async def run_agent(request: AgentRequest):
     deep_agent = get_deep_agent()
-    result = deep_agent.invoke({"messages": [{"role": "user", "content": request.task}]})
+    result = await deep_agent.ainvoke({"messages": [{"role": "user", "content": request.task}]})
     tools_used = [tc["name"] for m in result["messages"] for tc in (getattr(m, "tool_calls", []) or [])]
     final_message = result["messages"][-1].content
     return {"answer": final_message, "tools_used": tools_used}
