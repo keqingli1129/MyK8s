@@ -13,3 +13,4 @@ wheels/
 # it is internal PKI material on a public repo, and images built off this network should
 # not trust the proxy.
 certs/*.crt
+.env
