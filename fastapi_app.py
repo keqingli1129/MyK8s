@@ -83,6 +83,8 @@ def _serialize_messages(messages):
 def _serialize_update(update: dict) -> dict:
     serialized = {}
     for node, state in update.items():
+        if state is None:
+            continue
         node_data = dict(state)
         if "messages" in node_data:
             node_data["messages"] = _serialize_messages(node_data["messages"])

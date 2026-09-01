@@ -21,5 +21,10 @@ spec:
         env:
         - name: REDIS_URL
           value: redis://redis:6379/0
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-secret
+              key: OPENAI_API_KEY
 
           
