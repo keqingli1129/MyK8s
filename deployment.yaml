@@ -18,5 +18,8 @@ spec:
         ports:
         - containerPort: 8080
         imagePullPolicy: IfNotPresent
+        env:
+        - name: REDIS_URL
+          value: redis://redis:6379/0
 
           
